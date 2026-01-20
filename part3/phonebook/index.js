@@ -1,7 +1,9 @@
 const express = require('express')
 var morgan = require('morgan')
+const cors = require('cors')
 const app = express()
 app.use(express.json())
+app.use(cors())
 morgan.token('body', (request, response) => {
     return JSON.stringify(request.body)
 })
@@ -61,6 +63,7 @@ app.delete('/api/persons/:id', (request, response) => {
 app.post('/api/persons', (request, response) => {
     const randId = Math.floor(Math.random() * 10000)
     const newPerson = request.body
+    console.log(request.body)
     if (!newPerson.name || !newPerson.number) {
         return response.status(400).json({
             error: 'no name or number'

@@ -1,19 +1,19 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3001/persons'
+const baseURL = 'http://localhost:3001/api/persons'
 
 const getAll = () => {
-    const request = axios.get('http://localhost:3001/persons')
+    const request = axios.get(baseURL)
     return request.then(response => response.data)
 }
 
 const create = (newPerson) => {
-    const request = axios.post('http://localhost:3001/persons', newPerson)
+    const request = axios.post(baseURL, newPerson)
     return request.then(response => response.data)
 }
 
 const deletePerson = (id) => {
-    const request = axios.delete(`http://localhost:3001/persons/${id}`)
+    const request = axios.delete(`${baseURL}/${id}`)
     return request.then(response => response.data)
 }
 
